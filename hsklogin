@@ -1,0 +1,23 @@
+#!/usr/bin/env ksh
+#####################################################################
+# hsklogin - perform a "safe" login to the ssh-agent for an yubikey #
+#            szymon@kapadia.pl                                      #
+#####################################################################
+
+ssh-add -e /usr/local/lib/libykcs11.dylib > /dev/null 2>&1
+if [[ $? == 0 ]]
+  then
+    echo -n "Existing keys removed..."
+  else
+    echo -n "No existing keys..."
+fi
+
+echo "Performing Login"
+ssh-add -s /usr/local/lib/libykcs11.dylib > /dev/null 2>&1
+if [[ $? == 0 ]] 
+  then 
+    echo "Keys added to agent"
+    ssh-add -l
+  else 
+    echo "Failure: wrong pin or key not inserted"
+fi

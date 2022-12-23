@@ -4,6 +4,17 @@
 #            szymon@kapadia.pl                                      #
 #####################################################################
 
+while getopts ":lL" option; do
+   case $option in
+      l) # list public key hashes
+         ssh-add -l
+         exit;;
+      L) # list full public keys
+         ssh-add -L
+         exit;;
+   esac
+done
+
 ssh-add -e /usr/local/lib/libykcs11.dylib -t 57600 > /dev/null 2>&1
 if [[ $? == 0 ]]
   then

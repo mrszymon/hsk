@@ -15,7 +15,7 @@ while getopts ":lL" option; do
    esac
 done
 
-ssh-add -e /usr/local/lib/libykcs11.dylib -t 57600 > /dev/null 2>&1
+ssh-add -e /usr/local/lib/libykcs11.dylib > /dev/null 2>&1
 if [[ $? == 0 ]]
   then
     echo -n "Existing keys removed..."
@@ -24,7 +24,7 @@ if [[ $? == 0 ]]
 fi
 
 echo "Performing Login"
-ssh-add -s /usr/local/lib/libykcs11.dylib > /dev/null 2>&1
+ssh-add -s /usr/local/lib/libykcs11.dylib -t 57600 > /dev/null 2>&1
 if [[ $? == 0 ]] 
   then 
     echo "Keys added to agent"

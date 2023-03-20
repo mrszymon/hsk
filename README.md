@@ -5,8 +5,7 @@ so that you don't have to type in the PIN for every git pull.
 
 ## Prerequirements
 
-Set up your yubikey for github SSH and test that it works correctly 
-(follow instructions at https://w3.ibm.com/#/support/article/hsk/github).
+Set up your yubikey for github SSH and test that it works correctly.
 
 
 ## Installing
@@ -44,8 +43,3 @@ The script performs the following steps:
   - lists the installed keys
 
 For more information, see `man ssh-add`.
-
-`hsklogin` was approved for use in the [#hsk-community])
-(https://ibm-security.slack.com/archives/C025SQRFM6H/p1666714770856989) 
-slack channel.
-

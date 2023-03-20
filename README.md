@@ -1,4 +1,4 @@
-# hsk
+# hsklogin
 
 The `hsklogin` script uses the macOS ssh-agent with the yubikey, 
 so that you don't have to type in the PIN for every git pull.

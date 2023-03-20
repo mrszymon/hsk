@@ -4,14 +4,34 @@
 #            szymon@kapadia.pl                                      #
 #####################################################################
 
-while getopts ":lL" option; do
+life=57600 # 16 hours
+
+usage() {
+   echo 'usage: hsklogin [-t life] [-elLh]
+     -t life: key life time in seconds
+     -e: delete keys
+     -l: display keys
+     -L: dislpay keys in detail
+     -h: print usage'
+}
+
+while getopts ":helLt:" option; do
    case $option in
+      h) # usage
+         usage
+         exit;;
+      e) # remove keys
+         ssh-add -e /usr/local/lib/libykcs11.dylib
+         exit;;
       l) # list public key hashes
          ssh-add -l
          exit;;
       L) # list full public keys
          ssh-add -L
          exit;;
+      t) # life: Set a maximum lifetime when adding identities to an agent.  The lifetime may be specified in seconds or in a time format specified in sshd_config(5).
+         life=$OPTARG
+         ;;
    esac
 done
 
@@ -23,8 +43,9 @@ if [[ $? == 0 ]]
     echo -n "No existing keys..."
 fi
 
+
 echo "Performing Login"
-ssh-add -s /usr/local/lib/libykcs11.dylib -t 57600 > /dev/null 2>&1
+ssh-add -s /usr/local/lib/libykcs11.dylib -t $life > /dev/null 2>&1
 if [[ $? == 0 ]] 
   then 
     echo "Keys added to agent"

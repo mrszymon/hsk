@@ -12,7 +12,16 @@ usage() {
      -e: delete keys
      -l: display keys
      -L: dislpay keys in detail
-     -h: print usage'
+     -h: print usage
+     
+     create keys using default life time:
+      hsklogin
+
+     create keys with an explicit life time (in seconds):
+      hsklogin -t 6000
+
+     delete installed keys:
+      hsklogin -e'
 }
 
 while getopts ":helLt:" option; do

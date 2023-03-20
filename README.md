@@ -20,25 +20,8 @@ chmod u+x /usr/local/bin/hsklogin
 
 ## Usage
 
-display installed keys:
 ```
-hsklogin -l
-hsklogin -L
-```
-
-create keys using default life time:
-```
-hsklogin
-```
-
-create keys with an explicit life time (in seconds):
-```
-hsklogin -t 6000
-```
-
-delete installed keys:
-```
-hsklogin -e
+hsklogin -h
 ```
 
 
